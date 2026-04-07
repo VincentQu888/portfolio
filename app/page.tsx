@@ -13,16 +13,18 @@ export default function Home() {
       <div data-webring="ca" data-member="vincent"></div>
       <script src="https://webring.ca/embed.js" defer></script>
       <br/>
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }} className="w-full">
-        <a href='https://uoftwebring.com/redirect?nav=prev&id=41'>←</a>
-        <a href='https://uoftwebring.com' target='_blank'>
-        <img
-          src='https://uoftwebring.com/ring_logo.svg'
-          alt='UofT Webring'
-          style={{width: '24px', height: 'auto'}}
-        />
-        </a>
-        <a href='https://uoftwebring.com/redirect?nav=next&id=41'>→</a>
+      <div className="flex w-full justify-center">
+        <div className="flex items-center gap-2">
+          <a href="https://uoftwebring.com/redirect?nav=prev&id=41">←</a>
+          <a href="https://uoftwebring.com" target="_blank">
+              <img
+                  src="https://uoftwebring.com/ring_logo.svg"
+                  alt="UofT Webring"
+                  className="w-6 h-auto"
+              />
+          </a>
+          <a href="https://uoftwebring.com/redirect?nav=next&id=41">→</a>
+        </div>
       </div>
     </div>
   );
