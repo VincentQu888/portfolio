@@ -3,7 +3,7 @@ import Image from "next/image";
 export default function Home() {
   return (
     <div className="p-8">
-      <p>vincent qu's portfolio</p>
+      <p><a href="https://github.com/VincentQu888" target="_blank" rel="noopener noreferrer">vincent qu's</a> portfolio</p>
       <p>this portfolio is gonna be fire trust</p>
       <p>wip</p>
       <br/>
