@@ -163,9 +163,10 @@ export default function Home() {
         <span>© {new Date().getFullYear()} Vincent Qu</span>
       </footer>
 
-      {/* Webring badge, pinned to the bottom-right corner */}
+      {/* Webring badge, pinned to the bottom-right corner.
+          Must be a <div> — webring.ca/embed.js only targets div[data-webring]. */}
       <div className="fixed bottom-4 right-4 z-10">
-        <span data-webring="ca" data-member="vincent" />
+        <div data-webring="ca" data-member="vincent" />
       </div>
       <Script src="https://webring.ca/embed.js" strategy="afterInteractive" />
     </main>
