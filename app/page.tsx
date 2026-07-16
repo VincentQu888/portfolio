@@ -124,12 +124,12 @@ const otherWork: Project[] = [
   {
     title: "Ephemeral",
     description: "Weird Geometry Dash memory layout idea.",
-    image: "/projects/placeholder-2.svg",
+    youtube: "https://www.youtube.com/watch?v=-horEvEZkBQ"
   },
   {
     title: "Lepido",
     description: "Probably the best layout I've ever created in Geometry Dash.",
-    image: "/projects/placeholder-2.svg",
+    youtube: "https://www.youtube.com/watch?v=A4xfC3NHu9Y"
   },
   {
     title: "Reminiscence",
