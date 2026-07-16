@@ -2,6 +2,13 @@ import type { ReactNode } from "react";
 import Link from "next/link";
 import Script from "next/script";
 
+// Things I'm proud of — newest first. Add a `year` if you want it shown.
+const proud: { text: string; year?: string }[] = [
+  { text: "Named a Schulich Leader Scholar" },
+  { text: "Software engineering internship at Shopify" },
+  { text: "Studying computer science at the University of Toronto" },
+];
+
 function Row({ label, children }: { label: string; children: ReactNode }) {
   return (
     <section className="grid grid-cols-1 gap-1.5 sm:grid-cols-[6rem_1fr] sm:gap-8">
@@ -65,6 +72,26 @@ export default function Home() {
             <A href="https://www.shopify.com">Shopify</A>, working on messaging.
             Spending my spare cycles learning machine learning.
           </p>
+        </Row>
+
+        <Row label="proud of">
+          <ul className="space-y-2">
+            {proud.map((item, i) => (
+              <li key={i} className="flex gap-3">
+                <span aria-hidden className="select-none text-muted">
+                  —
+                </span>
+                <span>
+                  {item.text}
+                  {item.year && (
+                    <span className="ml-2 font-mono text-xs text-muted">
+                      {item.year}
+                    </span>
+                  )}
+                </span>
+              </li>
+            ))}
+          </ul>
         </Row>
 
         <Row label="projects">
