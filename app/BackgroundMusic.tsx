@@ -5,7 +5,6 @@ import { useEffect, useRef, useState } from "react";
 const VIDEO_ID = "vITzcY1KMOk";
 const SONG_NAME = "Tell Me You Know – Good Kid";
 const SONG_URL = `https://www.youtube.com/watch?v=${VIDEO_ID}`;
-const VOLUME = 45;
 
 // Minimal YouTube IFrame API typings (only what we use).
 type YTPlayer = {
@@ -57,10 +56,8 @@ function SpeakerIcon({ muted }: { muted: boolean }) {
 export default function BackgroundMusic() {
   const playerRef = useRef<YTPlayer | null>(null);
   const startedRef = useRef(false);
-  const wantSoundRef = useRef(true); // try to have sound on as soon as allowed
   const [muted, setMuted] = useState(true);
 
-  // Create the hidden YouTube player.
   useEffect(() => {
     if (startedRef.current) return; // guard against React strict-mode double run
     startedRef.current = true;
@@ -83,7 +80,7 @@ export default function BackgroundMusic() {
         },
         events: {
           onReady: (e: { target: YTPlayer }) => {
-            // Browsers only allow muted autoplay; sound waits for a gesture.
+            // Muted autoplay is allowed; the toggle unmutes on user gesture.
             e.target.mute();
             e.target.playVideo();
           },
@@ -116,42 +113,15 @@ export default function BackgroundMusic() {
     };
   }, []);
 
-  // Unmute on the very first interaction anywhere on the page — the closest
-  // thing to "autoplay with sound" that browsers permit.
-  useEffect(() => {
-    const onFirstGesture = () => {
-      if (!wantSoundRef.current) return; // user chose to keep it muted
-      const p = playerRef.current;
-      if (p) {
-        p.unMute();
-        p.setVolume(VOLUME);
-        p.playVideo();
-        setMuted(false);
-      }
-      remove();
-    };
-    const remove = () => {
-      document.removeEventListener("pointerdown", onFirstGesture);
-      document.removeEventListener("keydown", onFirstGesture);
-      document.removeEventListener("touchstart", onFirstGesture);
-    };
-    document.addEventListener("pointerdown", onFirstGesture);
-    document.addEventListener("keydown", onFirstGesture);
-    document.addEventListener("touchstart", onFirstGesture);
-    return remove;
-  }, []);
-
   function toggle() {
     const p = playerRef.current;
     if (!p) return;
     if (muted) {
-      wantSoundRef.current = true;
       p.unMute();
-      p.setVolume(VOLUME);
+      p.setVolume(45);
       p.playVideo();
       setMuted(false);
     } else {
-      wantSoundRef.current = false;
       p.mute();
       setMuted(true);
     }
