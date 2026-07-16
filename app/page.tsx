@@ -83,6 +83,9 @@ const projects: Project[] = [
   },
 ];
 
+// Other work — currently mirrors `projects`; replace with its own entries to curate.
+const otherWork: Project[] = [...projects];
+
 function Row({ label, children }: { label: string; children: ReactNode }) {
   return (
     <section className="grid grid-cols-1 gap-1.5 sm:grid-cols-[6rem_1fr] sm:gap-8">
@@ -163,6 +166,32 @@ function Info({ children }: { children: ReactNode }) {
   );
 }
 
+// A scrollable list of project cards so a long list stays compact.
+function ProjectList({ items }: { items: Project[] }) {
+  return (
+    <div className="scroll-thin max-h-[26rem] space-y-8 overflow-y-auto pr-3">
+      {items.map((project) => (
+        <article key={project.title} className="space-y-2.5">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={project.image}
+            alt={project.title}
+            className="aspect-video w-full rounded-md border border-edge object-cover"
+          />
+          <h3 className="font-medium">
+            {project.href ? (
+              <A href={project.href}>{project.title}</A>
+            ) : (
+              project.title
+            )}
+          </h3>
+          <p className="text-sm text-muted">{project.description}</p>
+        </article>
+      ))}
+    </div>
+  );
+}
+
 export default function Home() {
   return (
     <main className="mx-auto flex min-h-dvh w-full max-w-xl flex-col justify-center gap-12 px-6 py-20">
@@ -190,26 +219,11 @@ export default function Home() {
         </Row>
 
         <Row label="projects">
-          <div className="space-y-8">
-            {projects.map((project) => (
-              <article key={project.title} className="space-y-2.5">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="aspect-video w-full rounded-md border border-edge object-cover"
-                />
-                <h3 className="font-medium">
-                  {project.href ? (
-                    <A href={project.href}>{project.title}</A>
-                  ) : (
-                    project.title
-                  )}
-                </h3>
-                <p className="text-sm text-muted">{project.description}</p>
-              </article>
-            ))}
-          </div>
+          <ProjectList items={projects} />
+        </Row>
+
+        <Row label="other work">
+          <ProjectList items={otherWork} />
         </Row>
 
         <Row label="hobbies">
