@@ -159,15 +159,11 @@ export default function Home() {
         </Row>
       </div>
 
-      <footer className="border-t border-edge pt-5 text-sm text-muted">
+      <footer className="flex items-center justify-between border-t border-edge pt-5 text-sm text-muted">
         <span>© {new Date().getFullYear()} Vincent Qu</span>
-      </footer>
-
-      {/* Webring badge, pinned to the bottom-right corner.
-          Must be a <div> — webring.ca/embed.js only targets div[data-webring]. */}
-      <div className="fixed bottom-4 right-4 z-10">
+        {/* Must be a <div> — webring.ca/embed.js only targets div[data-webring]. */}
         <div data-webring="ca" data-member="vincent" />
-      </div>
+      </footer>
       <Script src="https://webring.ca/embed.js" strategy="afterInteractive" />
     </main>
   );
