@@ -3,9 +3,15 @@ import Link from "next/link";
 import Script from "next/script";
 
 // Things I'm proud of — newest first. Add a `year` if you want it shown.
-const proud: { text: string; year?: string }[] = [
-  { text: "Named a Schulich Leader Scholar" },
-  { text: "Software engineering internship at Shopify" },
+const proud: { text: string; year?: string; info?: string }[] = [
+  {
+    text: "Named a Schulich Leader Scholar",
+    info: "One of ~100 students across Canada awarded the Schulich Leader Scholarship, the country's largest STEM undergraduate scholarship.",
+  },
+  {
+    text: "Software engineering internship at Shopify",
+    info: "Software engineering intern working on messaging.",
+  },
   { text: "Studying computer science at the University of Toronto" },
 ];
 
@@ -69,6 +75,27 @@ function A({ href, children }: { href: string; children: ReactNode }) {
   );
 }
 
+// Small circled "i" with a hover/focus tooltip (CSS-only, no client JS).
+function Info({ children }: { children: ReactNode }) {
+  return (
+    <span className="group relative ml-1.5 inline-flex align-middle">
+      <span
+        tabIndex={0}
+        aria-label="More info"
+        className="inline-flex h-4 w-4 cursor-help items-center justify-center rounded-full border border-edge font-mono text-[10px] leading-none text-muted transition-colors hover:border-foreground hover:text-foreground focus:outline-none"
+      >
+        i
+      </span>
+      <span
+        role="tooltip"
+        className="pointer-events-none absolute bottom-full left-1/2 z-20 mb-2 w-max max-w-[16rem] -translate-x-1/2 rounded-md border border-edge bg-background px-2.5 py-1.5 text-xs font-normal leading-snug text-foreground opacity-0 shadow-sm transition-opacity duration-150 group-hover:opacity-100 group-focus-within:opacity-100"
+      >
+        {children}
+      </span>
+    </span>
+  );
+}
+
 export default function Home() {
   return (
     <main className="mx-auto flex min-h-dvh w-full max-w-xl flex-col justify-center gap-12 px-6 py-20">
@@ -80,6 +107,8 @@ export default function Home() {
         <nav className="mt-5 flex gap-5 font-mono text-xs uppercase tracking-[0.2em] text-muted">
           <A href="/blog">blog</A>
           <A href="https://github.com/VincentQu888">github</A>
+          <A href="https://devpost.com/vincentqu888">devpost</A>
+          <A href="/resume.pdf">resume</A>
         </nav>
       </header>
 
@@ -88,51 +117,6 @@ export default function Home() {
           <p>
             SWE @ Shopify, Computer Science @ University of Toronto, <A href="https://schulichleaders.com/scholars/vincent-qu/">Schulich Leader Scholarship</A>.
           </p>
-        </Row>
-
-        <Row label="proud of">
-          <ul className="space-y-2">
-            {proud.map((item, i) => (
-              <li key={i} className="flex gap-3">
-                <span aria-hidden className="select-none text-muted">
-                  —
-                </span>
-                <span>
-                  {item.text}
-                  {item.year && (
-                    <span className="ml-2 font-mono text-xs text-muted">
-                      {item.year}
-                    </span>
-                  )}
-                </span>
-              </li>
-            ))}
-          </ul>
-        </Row>
-
-        <Row label="blog">
-          <p className="text-muted">
-            Notes and essays on what I&apos;m building and learning —{" "}
-            <A href="/blog">read the blog</A>.
-          </p>
-        </Row>
-
-        <Row label="links">
-          <ul className="space-y-1.5">
-            <li>
-              <A href="https://github.com/VincentQu888">GitHub</A>
-            </li>
-            <li>
-              <A href="https://devpost.com/vincentqu888">Devpost</A>
-            </li>
-            <li>
-              {/* TODO: drop resume.pdf into /public, or point this at a hosted resume */}
-              <A href="/resume.pdf">Résumé</A>
-            </li>
-            <li>
-              <A href="mailto:vincent.qu@mail.utoronto.ca">Email</A>
-            </li>
-          </ul>
         </Row>
 
         <Row label="projects">
@@ -157,6 +141,53 @@ export default function Home() {
             ))}
           </div>
         </Row>
+
+        <Row label="proud of!">
+          <ul className="space-y-2">
+            {proud.map((item, i) => (
+              <li key={i} className="flex gap-3">
+                <span aria-hidden className="select-none text-muted">
+                  —
+                </span>
+                <span>
+                  {item.text}
+                  {item.year && (
+                    <span className="ml-2 font-mono text-xs text-muted">
+                      {item.year}
+                    </span>
+                  )}
+                  {item.info && <Info>{item.info}</Info>}
+                </span>
+              </li>
+            ))}
+          </ul>
+        </Row>
+
+        <Row label="blog">
+          <p className="text-muted">
+            Thoughts on things I learn, stories, and anything else I feel like writing about! —{" "}
+            <A href="/blog">read the blog</A>.
+          </p>
+        </Row>
+
+        <Row label="links">
+          <ul className="space-y-1.5">
+            <li>
+              <A href="https://github.com/VincentQu888">GitHub</A>
+            </li>
+            <li>
+              <A href="https://devpost.com/vincentqu888">Devpost</A>
+            </li>
+            <li>
+              {/* TODO: drop resume.pdf into /public, or point this at a hosted resume */}
+              <A href="/resume.pdf">Resume</A>
+            </li>
+            <li>
+              <A href="mailto:vincent.qu@mail.utoronto.ca">Email</A>
+            </li>
+          </ul>
+        </Row>
+
       </div>
 
       <footer className="flex items-center justify-between border-t border-edge pt-5 text-sm text-muted">
