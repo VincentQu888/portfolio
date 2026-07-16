@@ -5,12 +5,12 @@ import Script from "next/script";
 // Things I'm proud of — newest first. Add a `year` if you want it shown.
 const proud: { text: string; year?: string; info?: string }[] = [
   {
-    text: "Named a Schulich Leader Scholar",
-    info: "One of ~100 students across Canada awarded the Schulich Leader Scholarship, the country's largest STEM undergraduate scholarship.",
+    text: "Awarded a [Schulich Leader Scholarship](https://schulichleaders.com/scholars/vincent-qu/) at both UofT and UBC",
+    info: "One of 100 students across Canada awarded the Schulich Leader Scholarship, the country's largest STEM undergraduate scholarship at the top 2 ranked Canadian universities.",
   },
   {
-    text: "Software engineering internship at Shopify",
-    info: "Software engineering intern working on messaging.",
+    text: "Top 300 by points on DMOJ",
+    info: "",
   },
   { text: "Studying computer science at the University of Toronto" },
 ];
@@ -75,6 +75,26 @@ function A({ href, children }: { href: string; children: ReactNode }) {
   );
 }
 
+// Render a plain string, turning [label](href) markdown-style links into <A>.
+function Rich({ children }: { children: string }) {
+  const parts: ReactNode[] = [];
+  const pattern = /\[([^\]]+)\]\(([^)]+)\)/g;
+  let last = 0;
+  let key = 0;
+  let m: RegExpExecArray | null;
+  while ((m = pattern.exec(children)) !== null) {
+    if (m.index > last) parts.push(children.slice(last, m.index));
+    parts.push(
+      <A key={key++} href={m[2]}>
+        {m[1]}
+      </A>,
+    );
+    last = pattern.lastIndex;
+  }
+  if (last < children.length) parts.push(children.slice(last));
+  return <>{parts}</>;
+}
+
 // Small circled "i" with a hover/focus tooltip (CSS-only, no client JS).
 function Info({ children }: { children: ReactNode }) {
   return (
@@ -88,9 +108,11 @@ function Info({ children }: { children: ReactNode }) {
       </span>
       <span
         role="tooltip"
-        className="pointer-events-none absolute bottom-full left-1/2 z-20 mb-2 w-max max-w-[16rem] -translate-x-1/2 rounded-md border border-edge bg-background px-2.5 py-1.5 text-xs font-normal leading-snug text-foreground opacity-0 shadow-sm transition-opacity duration-150 group-hover:opacity-100 group-focus-within:opacity-100"
+        className="pointer-events-none absolute bottom-full left-1/2 z-20 w-max max-w-[16rem] -translate-x-1/2 pb-2 opacity-0 transition-opacity duration-150 group-hover:pointer-events-auto group-hover:opacity-100 group-focus-within:pointer-events-auto group-focus-within:opacity-100"
       >
-        {children}
+        <span className="block rounded-md border border-edge bg-background px-2.5 py-1.5 text-xs font-normal leading-snug text-foreground shadow-sm">
+          {children}
+        </span>
       </span>
     </span>
   );
@@ -150,13 +172,17 @@ export default function Home() {
                   —
                 </span>
                 <span>
-                  {item.text}
+                  <Rich>{item.text}</Rich>
                   {item.year && (
                     <span className="ml-2 font-mono text-xs text-muted">
                       {item.year}
                     </span>
                   )}
-                  {item.info && <Info>{item.info}</Info>}
+                  {item.info && (
+                    <Info>
+                      <Rich>{item.info}</Rich>
+                    </Info>
+                  )}
                 </span>
               </li>
             ))}
