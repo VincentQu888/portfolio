@@ -169,10 +169,14 @@ export default function Home() {
         </Row>
       </div>
 
-      <footer className="flex items-center justify-between border-t border-edge pt-5 text-sm text-muted">
+      <footer className="border-t border-edge pt-5 text-sm text-muted">
         <span>© {new Date().getFullYear()} Vincent Qu</span>
-        <span data-webring="ca" data-member="vincent" />
       </footer>
+
+      {/* Webring badge, pinned to the bottom-right corner */}
+      <div className="fixed bottom-4 right-4 z-10">
+        <span data-webring="ca" data-member="vincent" />
+      </div>
       <Script src="https://webring.ca/embed.js" strategy="afterInteractive" />
     </main>
   );
