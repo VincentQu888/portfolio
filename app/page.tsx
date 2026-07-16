@@ -60,22 +60,27 @@ type Experience = {
 const experiences: Experience[] = [
   {
     role: "Software Engineering Intern, Shopify",
-    date: "2025",
+    date: "2026",
     description: "Working on the Messaging team.",
   },
   {
-    role: "Co-founder, NRGHacks",
-    date: "2025",
-    description:
-      "Ran a 100+ student [high school hackathon](https://vincentqu888.github.io/nrghacks2025/) — built the site, hosted 3 workshops, and gave the keynote.",
+    role: "Machine Learning Engineer, UTMIST",
+    date: "2025/2026",
+    description: "Engineering for UofT Machine Intelligence Student Team's FixMyElo, DFOD, and Agent Forge projects",
+  },
+  {
+    role: "Quantitative Developer, St. George Capital",
+    date: "2025/2026",
+    description: "Quantitative development and research, explored hierarchical clustering-based asset allocation.",
   },
 ];
 
 type Project = {
   title: string;
   description: string;
-  image: string; // path under /public, e.g. "/projects/foo.png"
+  image?: string; // path under /public; optional when `youtube` is set
   href?: string; // optional link (repo, demo, writeup)
+  youtube?: string; // YouTube URL — auto-uses its thumbnail and links to the video
 };
 
 // Projects — add a screenshot to /public/projects and a short blurb.
@@ -89,7 +94,7 @@ const projects: Project[] = [
   },
   {
     title: "FixMyElo",
-    description: "Built an encoder-only transformer from scratch + discord bot for 11th grade CS class. Determines if school board Instagram posts indicate snow days.",
+    description: "Architected a self-explaining RL-based chess agent by using attention-weighted board states, policy/value networks and MCTS + UCT move calculation with PyTorch, CUDA and python-chess",
     image: "/projects/placeholder-2.svg",
   },
   {
@@ -119,6 +124,11 @@ const otherWork: Project[] = [
   {
     title: "Lepido",
     description: "Probably the best layout I've ever created in Geometry Dash.",
+    image: "/projects/placeholder-2.svg",
+  },
+  {
+    title: "Reminiscence",
+    description: "Hackathon project that uses 3DGS to reconstruct VR environments from plain video. I think the demo video we filmed is the cooler part though.",
     image: "/projects/placeholder-2.svg",
   },
 ];
@@ -203,28 +213,54 @@ function Info({ children }: { children: ReactNode }) {
   );
 }
 
+// Pull the 11-char video id out of common YouTube URL shapes.
+function youTubeId(url: string): string | null {
+  const m = url.match(
+    /(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/|shorts\/))([\w-]{11})/,
+  );
+  return m ? m[1] : null;
+}
+
 // A scrollable list of project cards so a long list stays compact.
 function ProjectList({ items }: { items: Project[] }) {
   return (
     <div className="scroll-thin max-h-[26rem] space-y-8 overflow-y-auto rounded-lg border border-edge p-4">
-      {items.map((project) => (
-        <article key={project.title} className="space-y-2.5">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
+      {items.map((project) => {
+        const videoId = project.youtube ? youTubeId(project.youtube) : null;
+        const image = videoId
+          ? `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`
+          : project.image;
+        const href = project.href ?? project.youtube;
+        const thumb = image ? (
+          // eslint-disable-next-line @next/next/no-img-element
           <img
-            src={project.image}
+            src={image}
             alt={project.title}
             className="aspect-video w-full rounded-md border border-edge object-cover"
           />
-          <h3 className="font-medium">
-            {project.href ? (
-              <A href={project.href}>{project.title}</A>
+        ) : null;
+        return (
+          <article key={project.title} className="space-y-2.5">
+            {href && thumb ? (
+              <a
+                href={href}
+                {...(href.startsWith("http")
+                  ? { target: "_blank", rel: "noopener noreferrer" }
+                  : {})}
+                className="block"
+              >
+                {thumb}
+              </a>
             ) : (
-              project.title
+              thumb
             )}
-          </h3>
-          <p className="text-sm text-muted">{project.description}</p>
-        </article>
-      ))}
+            <h3 className="font-medium">
+              {href ? <A href={href}>{project.title}</A> : project.title}
+            </h3>
+            <p className="text-sm text-muted">{project.description}</p>
+          </article>
+        );
+      })}
     </div>
   );
 }
