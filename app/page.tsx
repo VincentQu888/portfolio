@@ -50,6 +50,27 @@ const hobbies: string[] = [
   "Video Editing"
 ];
 
+type Experience = {
+  role: string; // supports [label](url) links
+  date: string;
+  description?: string; // supports [label](url) links
+};
+
+// Experience — resume-style; edit roles, dates, and descriptions.
+const experiences: Experience[] = [
+  {
+    role: "Software Engineering Intern, Shopify",
+    date: "2025",
+    description: "Working on the Messaging team.",
+  },
+  {
+    role: "Co-founder, NRGHacks",
+    date: "2025",
+    description:
+      "Ran a 100+ student [high school hackathon](https://vincentqu888.github.io/nrghacks2025/) — built the site, hosted 3 workshops, and gave the keynote.",
+  },
+];
+
 type Project = {
   title: string;
   description: string;
@@ -78,7 +99,7 @@ const projects: Project[] = [
   },
 ];
 
-// Other work — currently mirrors `projects`; replace with its own entries to curate.
+// Other work
 const otherWork: Project[] = [
   {
     title: "High Stakes",
@@ -86,13 +107,13 @@ const otherWork: Project[] = [
     image: "/projects/placeholder-2.svg",
   },
   {
-    title: "a Stakes",
-    description: "Wrote, filmed, directed and acted in small short film just for fun!",
+    title: "Ephemeral",
+    description: "Weird Geometry Dash memory layout idea.",
     image: "/projects/placeholder-2.svg",
   },
   {
-    title: "as Stakes",
-    description: "Wrote, filmed, directed and acted in small short film just for fun!",
+    title: "Lepido",
+    description: "Probably the best layout I've ever created in Geometry Dash.",
     image: "/projects/placeholder-2.svg",
   },
 ];
@@ -227,6 +248,28 @@ export default function Home() {
           <p>
             SWE @ Shopify, 1st Year Computer Science @ University of Toronto, <A href="https://schulichleaders.com/scholars/vincent-qu/">Schulich Leader Scholarship</A>.
           </p>
+        </Row>
+
+        <Row label="experience">
+          <div className="space-y-5">
+            {experiences.map((exp, i) => (
+              <div key={i}>
+                <div className="flex items-baseline justify-between gap-4">
+                  <h3 className="font-medium">
+                    <Rich>{exp.role}</Rich>
+                  </h3>
+                  <span className="shrink-0 whitespace-nowrap font-mono text-xs text-muted">
+                    {exp.date}
+                  </span>
+                </div>
+                {exp.description && (
+                  <p className="mt-1 text-sm text-muted">
+                    <Rich>{exp.description}</Rich>
+                  </p>
+                )}
+              </div>
+            ))}
+          </div>
         </Row>
 
         <Row label="projects">
