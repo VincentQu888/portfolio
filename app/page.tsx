@@ -88,6 +88,11 @@ const projects: Project[] = [
     href: "https://github.com/VincentQu888",
   },
   {
+    title: "FixMyElo",
+    description: "Built an encoder-only transformer from scratch + discord bot for 11th grade CS class. Determines if school board Instagram posts indicate snow days.",
+    image: "/projects/placeholder-2.svg",
+  },
+  {
     title: "Snowy",
     description: "Built an encoder-only transformer from scratch + discord bot for 11th grade CS class. Determines if school board Instagram posts indicate snow days.",
     image: "/projects/placeholder-2.svg",
