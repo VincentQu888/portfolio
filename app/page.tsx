@@ -75,10 +75,10 @@ export default function Home() {
       <header>
         <h1 className="text-2xl font-medium tracking-tight">Vincent Qu</h1>
         <p className="mt-2 text-muted">
-          CS student &amp; software engineer. Building on the web, learning ML.
+          Learning about ML
         </p>
         <nav className="mt-5 flex gap-5 font-mono text-xs uppercase tracking-[0.2em] text-muted">
-          <A href="/blog">writing</A>
+          <A href="/blog">blog</A>
           <A href="https://github.com/VincentQu888">github</A>
         </nav>
       </header>
@@ -86,17 +86,7 @@ export default function Home() {
       <div className="flex flex-col gap-9">
         <Row label="about">
           <p>
-            Computer science at the University of Toronto and a Schulich Leader
-            Scholar. I like building simple, well-crafted software and figuring
-            out how things work under the hood.
-          </p>
-        </Row>
-
-        <Row label="now">
-          <p>
-            Software engineering intern at{" "}
-            <A href="https://www.shopify.com">Shopify</A>, working on messaging.
-            Spending my spare cycles learning machine learning.
+            SWE @ Shopify, Computer Science @ University of Toronto, <A href="https://schulichleaders.com/scholars/vincent-qu/">Schulich Leader Scholarship</A>.
           </p>
         </Row>
 
@@ -120,7 +110,7 @@ export default function Home() {
           </ul>
         </Row>
 
-        <Row label="writing">
+        <Row label="blog">
           <p className="text-muted">
             Notes and essays on what I&apos;m building and learning —{" "}
             <A href="/blog">read the blog</A>.
