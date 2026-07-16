@@ -67,11 +67,6 @@ const projects: Project[] = [
     href: "https://github.com/VincentQu888",
   },
   {
-    title: "High Stakes",
-    description: "Wrote, filmed, directed and acted in small short film just for fun!",
-    image: "/projects/placeholder-2.svg",
-  },
-  {
     title: "Snowy",
     description: "Built an encoder-only transformer from scratch + discord bot for 11th grade CS class. Determines if school board Instagram posts indicate snow days.",
     image: "/projects/placeholder-2.svg",
@@ -84,7 +79,23 @@ const projects: Project[] = [
 ];
 
 // Other work — currently mirrors `projects`; replace with its own entries to curate.
-const otherWork: Project[] = [...projects];
+const otherWork: Project[] = [
+  {
+    title: "High Stakes",
+    description: "Wrote, filmed, directed and acted in small short film just for fun!",
+    image: "/projects/placeholder-2.svg",
+  },
+  {
+    title: "a Stakes",
+    description: "Wrote, filmed, directed and acted in small short film just for fun!",
+    image: "/projects/placeholder-2.svg",
+  },
+  {
+    title: "as Stakes",
+    description: "Wrote, filmed, directed and acted in small short film just for fun!",
+    image: "/projects/placeholder-2.svg",
+  },
+];
 
 function Row({ label, children }: { label: string; children: ReactNode }) {
   return (
@@ -169,7 +180,7 @@ function Info({ children }: { children: ReactNode }) {
 // A scrollable list of project cards so a long list stays compact.
 function ProjectList({ items }: { items: Project[] }) {
   return (
-    <div className="scroll-thin max-h-[26rem] space-y-8 overflow-y-auto pr-3">
+    <div className="scroll-thin max-h-[26rem] space-y-8 overflow-y-auto rounded-lg border border-edge p-4">
       {items.map((project) => (
         <article key={project.title} className="space-y-2.5">
           {/* eslint-disable-next-line @next/next/no-img-element */}
