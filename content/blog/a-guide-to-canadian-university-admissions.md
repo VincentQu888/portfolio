@@ -10,6 +10,8 @@ Admissions are confusing. From creating an OUAC account to figuring out exactly 
 
 This guide is mainly for Ontario high school students, but the writing tips apply to any high school student.
 
+![Dr. G. W. Williams Secondary School](/blog/admissions-cover.png)
+
 ## Why Listen to Me?
 
 Although only a first year in university as of writing this (and not an admissions officer, professional college counsellor or university official), I've undergone the admissions process for top Canadian and American universities and I have decent results to show for it. In Canada, I won the $100k [Schulich Leader Scholarship](https://schulichleaders.com/scholars/vincent-qu/) twice at the (debatably) [top 2 universities in Canada](https://www.timeshighereducation.com/student/best-universities/best-universities-canada). I won ⅕ science scholarships to study CS at the UofT, and ⅓ science scholarships to study CS at the UBC. Schulich leader scholarships are Canada's most coveted undergraduate scholarship, only awarded to Canada's top 100 highest potential STEM students every year. As well, I got into the University of Waterloo for Software Engineering with the Software Engineering scholarship, UofT EngSci, McMaster CS, and Carleton CS.
@@ -60,7 +62,7 @@ American schools aren't included because they care way less about grades. If you
 
 To give you a good idea about timelines for university, this is a spreadsheet I made during the admissions process to track when everything happened:[3]
 
-*(Timeline spreadsheet image goes here.)*
+![Admissions timeline spreadsheet I kept during the process](/blog/admissions-timeline.png)
 
 ## How many universities should I apply to?
 
@@ -233,7 +235,7 @@ I believe that the best action you can take to do well in high school is to just
 
 I've also found that the things you do, even for fun, often show up to help you in the future when you least expect it. I've been working on a no-code platform to build AI agents, and when talking with my team I suggested we design our frontend like the editing software I used 5 years ago to edit minecraft videos, with different colour arrows for different types of connections.
 
-*(DaVinci Resolve fusion tab image goes here.)*
+![DaVinci Resolve Fusion tab](/blog/davinci-fusion.png)
 
 *Davinci Resolve fusion tab. Isn't that crazy?*
 

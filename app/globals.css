@@ -99,6 +99,12 @@ body {
   color: var(--muted);
   font-style: italic;
 }
+.prose img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  border: 1px solid var(--edge);
+}
 
 /* Minimal scrollbar + soft fade at the top/bottom edges so cards don't
    get sliced by the container boundary. */
