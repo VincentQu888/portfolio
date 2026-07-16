@@ -73,6 +73,11 @@ const experiences: Experience[] = [
     date: "2025/2026",
     description: "Quantitative development and research, explored hierarchical clustering-based asset allocation.",
   },
+  {
+    role: "Algorithms Developer, UTQC",
+    date: "2025",
+    description: "Encoding TSP graphs onto a bloch sphere for UofT's Quantum Computing Club.",
+  },
 ];
 
 type Project = {
@@ -129,7 +134,7 @@ const otherWork: Project[] = [
   {
     title: "Reminiscence",
     description: "Hackathon project that uses 3DGS to reconstruct VR environments from plain video. I think the demo video we filmed is the cooler part though.",
-    image: "/projects/placeholder-2.svg",
+    youtube: "youtube.com/watch?v=IPXhelhYv0w&source_ve_path=MjM4NTE&embeds_referring_euri=https%3A%2F%2Fdevpost.com%2F"
   },
 ];
 
@@ -230,7 +235,15 @@ function ProjectList({ items }: { items: Project[] }) {
         const image = videoId
           ? `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`
           : project.image;
-        const href = project.href ?? project.youtube;
+        let href =
+          project.href ??
+          (videoId
+            ? `https://www.youtube.com/watch?v=${videoId}`
+            : project.youtube);
+        // A URL without a scheme would be treated as a relative path (404).
+        if (href && !/^(https?:|mailto:|\/)/.test(href)) {
+          href = `https://${href}`;
+        }
         const thumb = image ? (
           // eslint-disable-next-line @next/next/no-img-element
           <img
