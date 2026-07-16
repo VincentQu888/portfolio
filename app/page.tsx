@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import Link from "next/link";
 import Script from "next/script";
+import BackgroundMusic from "./BackgroundMusic";
 
 // Things I'm proud of — newest first. Add a `year` if you want it shown.
 const proud: { text: string; year?: string; info?: string }[] = [
@@ -10,7 +11,7 @@ const proud: { text: string; year?: string; info?: string }[] = [
   },
   {
     text: "Top 300 by points on DMOJ",
-    info: "",
+    info: "(At peak rank) The largest competitive programming website in Canada",
   },
   { text: "Studying computer science at the University of Toronto" },
 ];
@@ -222,6 +223,7 @@ export default function Home() {
         <div data-webring="ca" data-member="vincent" />
       </footer>
       <Script src="https://webring.ca/embed.js" strategy="afterInteractive" />
+      <BackgroundMusic />
     </main>
   );
 }
