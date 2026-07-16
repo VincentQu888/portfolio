@@ -18,6 +18,7 @@ const proud: { text: string; year?: string; info?: string }[] = [
     info: "[Completion video](https://www.youtube.com/watch?v=IC_2_WASt2A) for the hardest level I've beaten, ranking is by AREDL standards",
   },
   { text: "Ascendant in Valorant" },
+  { text: " in Overwatch" },
   { 
     text: "200 stars in bedwars",
     info: "[Old montage I made when I was 13](https://www.youtube.com/watch?v=L5clG2TMpI0&t=42s), probably the best demonstration of my old skill lol"
@@ -41,10 +42,12 @@ const proud: { text: string; year?: string; info?: string }[] = [
 
 // Hobbies — supports [label](url) links. Edit freely.
 const hobbies: string[] = [
-  "Listening to music",
-  "Gaming",
-  "Playing piano",
-  "Working out",
+  "Coding!",
+  "Poker",
+  "Badminton",
+  "Chess",
+  "Geometry Dash",
+  "Video Editing"
 ];
 
 type Project = {
@@ -59,13 +62,23 @@ const projects: Project[] = [
   {
     title: "FSDAD - Generalizing Deepfake Audio Detection",
     description:
-      "A short description of what it does and why it was fun to build.",
+      "First time trying research, wrote a paper on framing deepfake audio detection as a meta-learning problem to try few-shot generalization of a deepfake audio detector to new deepfake generators.",
     image: "/projects/placeholder-1.svg",
     href: "https://github.com/VincentQu888",
   },
   {
-    title: "FixMyElo",
-    description: "Swap in your own screenshot and description here.",
+    title: "High Stakes",
+    description: "Wrote, filmed, directed and acted in small short film just for fun!",
+    image: "/projects/placeholder-2.svg",
+  },
+  {
+    title: "Snowy",
+    description: "Built an encoder-only transformer from scratch + discord bot for 11th grade CS class. Determines if school board Instagram posts indicate snow days.",
+    image: "/projects/placeholder-2.svg",
+  },
+  {
+    title: "CalenDR",
+    description: "Founded full-stack medical app to schedule immmunization and cancer screening dates. Led entire SDLC and developed scheduling algorithms based on user-provided info.",
     image: "/projects/placeholder-2.svg",
   },
 ];
@@ -161,6 +174,8 @@ export default function Home() {
         <nav className="mt-5 flex gap-5 font-mono text-xs uppercase tracking-[0.2em] text-muted">
           <A href="/blog">blog</A>
           <A href="https://github.com/VincentQu888">github</A>
+          <A href="https://ca.linkedin.com/in/vincentqu888">linkedin</A>
+          <A href="https://x.com/icyfallblade">x</A>
           <A href="https://devpost.com/vincentqu888">devpost</A>
           <A href="/resume.pdf">resume</A>
         </nav>
@@ -169,7 +184,7 @@ export default function Home() {
       <div className="flex flex-col gap-9">
         <Row label="about">
           <p>
-            SWE @ Shopify, Computer Science @ University of Toronto, <A href="https://schulichleaders.com/scholars/vincent-qu/">Schulich Leader Scholarship</A>.
+            SWE @ Shopify, 1st Year Computer Science @ University of Toronto, <A href="https://schulichleaders.com/scholars/vincent-qu/">Schulich Leader Scholarship</A>.
           </p>
         </Row>
 
@@ -247,6 +262,12 @@ export default function Home() {
           <ul className="space-y-1.5">
             <li>
               <A href="https://github.com/VincentQu888">GitHub</A>
+            </li>
+            <li>
+              <A href="https://ca.linkedin.com/in/vincentqu888">LinkedIn</A>
+            </li>
+            <li>
+              <A href="https://x.com/icyfallblade">X</A>
             </li>
             <li>
               <A href="https://devpost.com/vincentqu888">Devpost</A>
