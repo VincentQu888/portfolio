@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import Link from "next/link";
 import Script from "next/script";
 
 function Row({ label, children }: { label: string; children: ReactNode }) {
@@ -12,13 +13,23 @@ function Row({ label, children }: { label: string; children: ReactNode }) {
   );
 }
 
+const linkClass =
+  "underline decoration-edge underline-offset-4 transition-colors hover:decoration-foreground";
+
 function A({ href, children }: { href: string; children: ReactNode }) {
-  const external = href.startsWith("http");
+  if (href.startsWith("/")) {
+    return (
+      <Link href={href} className={linkClass}>
+        {children}
+      </Link>
+    );
+  }
+  const newTab = href.startsWith("http");
   return (
     <a
       href={href}
-      {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-      className="underline decoration-edge underline-offset-4 transition-colors hover:decoration-foreground"
+      {...(newTab ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+      className={linkClass}
     >
       {children}
     </a>
@@ -33,6 +44,10 @@ export default function Home() {
         <p className="mt-2 text-muted">
           CS student &amp; software engineer. Building on the web, learning ML.
         </p>
+        <nav className="mt-5 flex gap-5 font-mono text-xs uppercase tracking-[0.2em] text-muted">
+          <A href="/blog">writing</A>
+          <A href="https://github.com/VincentQu888">github</A>
+        </nav>
       </header>
 
       <div className="flex flex-col gap-9">
@@ -56,6 +71,13 @@ export default function Home() {
           <p className="text-muted">
             A few things in progress — code lives on{" "}
             <A href="https://github.com/VincentQu888">GitHub</A> for now.
+          </p>
+        </Row>
+
+        <Row label="writing">
+          <p className="text-muted">
+            Notes and essays on what I&apos;m building and learning —{" "}
+            <A href="/blog">read the blog</A>.
           </p>
         </Row>
 
