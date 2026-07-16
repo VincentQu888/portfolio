@@ -13,7 +13,38 @@ const proud: { text: string; year?: string; info?: string }[] = [
     text: "Top 300 by points on DMOJ",
     info: "(At peak rank) The largest competitive programming website in Canada",
   },
-  { text: "Studying computer science at the University of Toronto" },
+  {
+    text: "Top 6000 in Geometry Dash",
+    info: "[Completion video](https://www.youtube.com/watch?v=IC_2_WASt2A) for the hardest level I've beaten, ranking is by AREDL standards",
+  },
+  { text: "Ascendant in Valorant" },
+  { 
+    text: "200 stars in bedwars",
+    info: "[Old montage I made when I was 13](https://www.youtube.com/watch?v=L5clG2TMpI0&t=42s), probably the best demonstration of my old skill lol"
+  },
+  { text: "2nd degree black belt in Taekwondo" },
+  {
+    text: "RCM piano level 8",
+    info: "[Video of most recent song I've learnt](a)",
+  },
+  { text: "10K trophies in Clash Royale" },
+  {
+    text: "51 ZetaMac score",
+    info: "Not great objectively, but I'm proud that I started with a score of 8 and got to 51 only a few weeks later.",
+  },
+  { text: "1500 ELO on chess.com" },
+  { 
+    text: "Co-founded NRGHacks",
+    info: "Founded a 100+ student [high school hackathon](https://vincentqu888.github.io/nrghacks2025/). Built the website, hosted 3 workshops, and I was the keynote speaker!"
+  },
+];
+
+// Hobbies — supports [label](url) links. Edit freely.
+const hobbies: string[] = [
+  "Listening to music",
+  "Gaming",
+  "Playing piano",
+  "Working out",
 ];
 
 type Project = {
@@ -26,14 +57,14 @@ type Project = {
 // Projects — add a screenshot to /public/projects and a short blurb.
 const projects: Project[] = [
   {
-    title: "Project One",
+    title: "FSDAD - Generalizing Deepfake Audio Detection",
     description:
       "A short description of what it does and why it was fun to build.",
     image: "/projects/placeholder-1.svg",
     href: "https://github.com/VincentQu888",
   },
   {
-    title: "Project Two",
+    title: "FixMyElo",
     description: "Swap in your own screenshot and description here.",
     image: "/projects/placeholder-2.svg",
   },
@@ -163,6 +194,21 @@ export default function Home() {
               </article>
             ))}
           </div>
+        </Row>
+
+        <Row label="hobbies">
+          <ul className="space-y-2">
+            {hobbies.map((h, i) => (
+              <li key={i} className="flex gap-3">
+                <span aria-hidden className="select-none text-muted">
+                  —
+                </span>
+                <span>
+                  <Rich>{h}</Rich>
+                </span>
+              </li>
+            ))}
+          </ul>
         </Row>
 
         <Row label="proud of!">
