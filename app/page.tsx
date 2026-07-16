@@ -9,6 +9,29 @@ const proud: { text: string; year?: string }[] = [
   { text: "Studying computer science at the University of Toronto" },
 ];
 
+type Project = {
+  title: string;
+  description: string;
+  image: string; // path under /public, e.g. "/projects/foo.png"
+  href?: string; // optional link (repo, demo, writeup)
+};
+
+// Projects — add a screenshot to /public/projects and a short blurb.
+const projects: Project[] = [
+  {
+    title: "Project One",
+    description:
+      "A short description of what it does and why it was fun to build.",
+    image: "/projects/placeholder-1.svg",
+    href: "https://github.com/VincentQu888",
+  },
+  {
+    title: "Project Two",
+    description: "Swap in your own screenshot and description here.",
+    image: "/projects/placeholder-2.svg",
+  },
+];
+
 function Row({ label, children }: { label: string; children: ReactNode }) {
   return (
     <section className="grid grid-cols-1 gap-1.5 sm:grid-cols-[6rem_1fr] sm:gap-8">
@@ -97,13 +120,6 @@ export default function Home() {
           </ul>
         </Row>
 
-        <Row label="projects">
-          <p className="text-muted">
-            A few things in progress — code lives on{" "}
-            <A href="https://github.com/VincentQu888">GitHub</A> for now.
-          </p>
-        </Row>
-
         <Row label="writing">
           <p className="text-muted">
             Notes and essays on what I&apos;m building and learning —{" "}
@@ -127,6 +143,29 @@ export default function Home() {
               <A href="mailto:vincent.qu@mail.utoronto.ca">Email</A>
             </li>
           </ul>
+        </Row>
+
+        <Row label="projects">
+          <div className="space-y-8">
+            {projects.map((project) => (
+              <article key={project.title} className="space-y-2.5">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  className="aspect-video w-full rounded-md border border-edge object-cover"
+                />
+                <h3 className="font-medium">
+                  {project.href ? (
+                    <A href={project.href}>{project.title}</A>
+                  ) : (
+                    project.title
+                  )}
+                </h3>
+                <p className="text-sm text-muted">{project.description}</p>
+              </article>
+            ))}
+          </div>
         </Row>
       </div>
 
