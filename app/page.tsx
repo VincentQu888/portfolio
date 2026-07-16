@@ -10,7 +10,7 @@ const proud: { text: string; year?: string; info?: string }[] = [
     info: "One of 100 students across Canada awarded the Schulich Leader Scholarship, the country's largest STEM undergraduate scholarship at the top 2 ranked Canadian universities.",
   },
   {
-    text: "Top 300 by points on DMOJ",
+    text: "Top 300 by points on [DMOJ](https://dmoj.ca/user/vincentqu)",
     info: "(At peak rank) The largest competitive programming website in Canada",
   },
   {
@@ -174,6 +174,7 @@ export default function Home() {
         <nav className="mt-5 flex gap-5 font-mono text-xs uppercase tracking-[0.2em] text-muted">
           <A href="/blog">blog</A>
           <A href="https://github.com/VincentQu888">github</A>
+          <A href="https://dmoj.ca/user/vincentqu">dmoj</A>
           <A href="https://ca.linkedin.com/in/vincentqu888">linkedin</A>
           <A href="https://x.com/icyfallblade">x</A>
           <A href="https://devpost.com/vincentqu888">devpost</A>
@@ -262,6 +263,9 @@ export default function Home() {
           <ul className="space-y-1.5">
             <li>
               <A href="https://github.com/VincentQu888">GitHub</A>
+            </li>
+            <li>
+              <A href="https://dmoj.ca/user/vincentqu">DMOJ</A>
             </li>
             <li>
               <A href="https://ca.linkedin.com/in/vincentqu888">LinkedIn</A>
