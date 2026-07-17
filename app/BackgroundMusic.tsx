@@ -67,8 +67,11 @@ function DownArrow() {
       strokeLinejoin="round"
       aria-hidden="true"
     >
-      {/* a curved arrow that sweeps down toward the icon */}
-      <path d="M5 4C6 12 8 17 12 19" />
+      {/* a curved arrow that sweeps down toward the icon; shaft rotated to
+          line up with the arrowhead */}
+      <g transform="rotate(60 12 19)">
+        <path d="M5 4C6 12 8 17 12 19" />
+      </g>
       <path d="M12 19l-3.5-2.5" />
       <path d="M12 19l3-3" />
     </svg>
