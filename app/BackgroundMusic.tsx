@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from "react";
 const VIDEO_ID = "vITzcY1KMOk";
 const SONG_NAME = "Tell Me You Know – Good Kid";
 const SONG_URL = `https://www.youtube.com/watch?v=${VIDEO_ID}`;
+const VOLUME = 45;
 
 // Minimal YouTube IFrame API typings (only what we use).
 type YTPlayer = {
@@ -53,11 +54,32 @@ function SpeakerIcon({ muted }: { muted: boolean }) {
   );
 }
 
+function DownArrow() {
+  return (
+    <svg
+      width="14"
+      height="14"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <path d="M12 5v14" />
+      <path d="m19 12-7 7-7-7" />
+    </svg>
+  );
+}
+
 export default function BackgroundMusic() {
   const playerRef = useRef<YTPlayer | null>(null);
   const startedRef = useRef(false);
   const [muted, setMuted] = useState(true);
+  const [interacted, setInteracted] = useState(false);
 
+  // Create the hidden YouTube player, but do NOT play until the user clicks.
   useEffect(() => {
     if (startedRef.current) return; // guard against React strict-mode double run
     startedRef.current = true;
@@ -69,20 +91,19 @@ export default function BackgroundMusic() {
         width: "320",
         height: "180",
         playerVars: {
-          autoplay: 1,
+          autoplay: 0,
           controls: 0,
           disablekb: 1,
           loop: 1,
           playlist: VIDEO_ID,
-          mute: 1,
           playsinline: 1,
           origin: window.location.origin,
         },
         events: {
-          onReady: (e: { target: YTPlayer }) => {
-            // Muted autoplay is allowed; the toggle unmutes on user gesture.
-            e.target.mute();
-            e.target.playVideo();
+          // Fallback for reliable infinite looping (YouTube's loop flag is flaky):
+          // when the video ends (state 0), start it again.
+          onStateChange: (e: { data: number; target: YTPlayer }) => {
+            if (e.data === 0) e.target.playVideo();
           },
         },
       });
@@ -116,9 +137,10 @@ export default function BackgroundMusic() {
   function toggle() {
     const p = playerRef.current;
     if (!p) return;
+    setInteracted(true);
     if (muted) {
       p.unMute();
-      p.setVolume(45);
+      p.setVolume(VOLUME);
       p.playVideo();
       setMuted(false);
     } else {
@@ -130,15 +152,27 @@ export default function BackgroundMusic() {
   return (
     <>
       <div className="fixed bottom-4 right-4 z-30 flex items-center gap-2 font-mono text-xs text-muted">
-        <button
-          type="button"
-          onClick={toggle}
-          aria-label={muted ? "Play background music" : "Mute background music"}
-          aria-pressed={!muted}
-          className="inline-flex items-center transition-colors hover:text-foreground focus:outline-none focus-visible:text-foreground"
-        >
-          <SpeakerIcon muted={muted} />
-        </button>
+        <div className="relative inline-flex">
+          {!interacted && (
+            <span
+              aria-hidden
+              className="pointer-events-none absolute -top-5 left-1/2 -translate-x-1/2"
+            >
+              <span className="block animate-bob text-muted">
+                <DownArrow />
+              </span>
+            </span>
+          )}
+          <button
+            type="button"
+            onClick={toggle}
+            aria-label={muted ? "Play background music" : "Mute background music"}
+            aria-pressed={!muted}
+            className="inline-flex items-center transition-colors hover:text-foreground focus:outline-none focus-visible:text-foreground"
+          >
+            <SpeakerIcon muted={muted} />
+          </button>
+        </div>
         <span aria-hidden>—</span>
         <a
           href={SONG_URL}

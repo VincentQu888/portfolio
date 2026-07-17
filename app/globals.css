@@ -38,6 +38,25 @@ body {
   color: var(--background);
 }
 
+/* Gentle up/down bob for the "click me" arrow on the music control */
+@keyframes bob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+}
+.animate-bob {
+  animation: bob 1s ease-in-out infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .animate-bob {
+    animation: none;
+  }
+}
+
 /* Rendered markdown (blog posts) */
 .prose {
   line-height: 1.75;
