@@ -69,7 +69,7 @@ function DownArrow() {
     >
       {/* a curved arrow that sweeps down toward the icon; shaft rotated to
           line up with the arrowhead */}
-      <g transform="rotate(60 12 19)">
+      <g transform="rotate(45 12 19)">
         <path d="M5 4C6 12 8 17 12 19" />
       </g>
       <path d="M12 19l-3.5-2.5" />
