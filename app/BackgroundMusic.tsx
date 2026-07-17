@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 
 const VIDEO_ID = "vITzcY1KMOk";
-const SONG_NAME = "Tell Me You Know – Good Kid";
+const SONG_NAME = "Tell Me You Know";
 const SONG_URL = `https://www.youtube.com/watch?v=${VIDEO_ID}`;
 const VOLUME = 45;
 
@@ -57,18 +57,20 @@ function SpeakerIcon({ muted }: { muted: boolean }) {
 function DownArrow() {
   return (
     <svg
-      width="14"
-      height="14"
+      width="20"
+      height="20"
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
-      strokeWidth="2.5"
+      strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
       aria-hidden="true"
     >
-      <path d="M12 5v14" />
-      <path d="m19 12-7 7-7-7" />
+      {/* a curved arrow that sweeps down toward the icon */}
+      <path d="M5 4C6 12 8 17 12 19" />
+      <path d="M12 19l-3.5-2.5" />
+      <path d="M12 19l3-3" />
     </svg>
   );
 }
@@ -156,9 +158,9 @@ export default function BackgroundMusic() {
           {!interacted && (
             <span
               aria-hidden
-              className="pointer-events-none absolute -top-5 left-1/2 -translate-x-1/2"
+              className="pointer-events-none absolute -top-6 left-1/2 -translate-x-1/2"
             >
-              <span className="block animate-bob text-muted">
+              <span className="block animate-bob text-muted/60">
                 <DownArrow />
               </span>
             </span>
