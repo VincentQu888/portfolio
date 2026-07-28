@@ -36,7 +36,7 @@ export default async function PostPage({
         href="/blog"
         className="font-mono text-xs uppercase tracking-[0.2em] text-muted underline decoration-edge underline-offset-4 transition-colors hover:decoration-foreground"
       >
-        ← writing
+        ← Writing
       </Link>
 
       <article className="mt-8">

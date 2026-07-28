@@ -18,7 +18,7 @@ const proud: { text: string; year?: string; info?: string }[] = [
     info: "[Completion video](https://www.youtube.com/watch?v=IC_2_WASt2A) for the hardest level I've beaten, ranking is by AREDL standards",
   },
   { text: "Ascendant in Valorant" },
-  { text: " in Overwatch" },
+  { text: "Diamond in Overwatch" },
   { 
     text: "200 stars in bedwars",
     info: "[Old montage I made when I was 13](https://www.youtube.com/watch?v=L5clG2TMpI0&t=42s), probably the best demonstration of my old skill lol"
@@ -26,14 +26,16 @@ const proud: { text: string; year?: string; info?: string }[] = [
   { text: "2nd degree black belt in Taekwondo" },
   {
     text: "RCM piano level 8",
-    info: "[Video of most recent song I've learnt](a)",
   },
   { text: "10K trophies in Clash Royale" },
+  { text: "TH14 + champion league in Clash of Clans" },
+  { text: "S+ rank on TETR.IO + 42s 40 line" },
   {
     text: "51 ZetaMac score",
     info: "Not great objectively, but I'm proud that I started with a score of 8 and got to 51 only a few weeks later.",
   },
   { text: "1500 ELO on chess.com" },
+  { text: "160 words per minute" },
   { 
     text: "Co-founded NRGHacks",
     info: "Founded a 100+ student [high school hackathon](https://vincentqu888.github.io/nrghacks2025/). Built the website, hosted 3 workshops, and I was the keynote speaker!"
@@ -61,7 +63,7 @@ const experiences: Experience[] = [
   {
     role: "Software Engineering Intern, Shopify",
     date: "2026",
-    description: "Working on the Messaging team.",
+    description: "ML and ML infra for Messaging team, smart sending, impact projections, causal learning.",
   },
   {
     role: "Machine Learning Engineer, UTMIST",
@@ -93,24 +95,26 @@ const projects: Project[] = [
   {
     title: "FSDAD - Generalizing Deepfake Audio Detection",
     description:
-      "First time trying research, wrote a paper on framing deepfake audio detection as a meta-learning problem to try few-shot generalization of a deepfake audio detector to new deepfake generators.",
-    image: "/projects/placeholder-1.svg",
-    href: "https://github.com/VincentQu888",
+      "First time trying research, wrote a solo paper on framing deepfake audio detection as a meta-learning problem to try few-shot generalization of a deepfake audio detector to new deepfake generators.",
+    image: "/projects/FSDAD.png",
+    href: "https://github.com/VincentQu888/generalizing-deepfake-audio-detection",
   },
   {
     title: "FixMyElo",
     description: "Architected a self-explaining RL-based chess agent by using attention-weighted board states, policy/value networks and MCTS + UCT move calculation with PyTorch, CUDA and python-chess",
-    image: "/projects/placeholder-2.svg",
+    image: "/projects/fixmyelo.png",
+    href: "https://github.com/UTMIST/fix-my-elo",
   },
   {
     title: "Snowy",
     description: "Built an encoder-only transformer from scratch + discord bot for 11th grade CS class. Determines if school board Instagram posts indicate snow days.",
-    image: "/projects/placeholder-2.svg",
+    image: "/projects/snowy.png",
+    href: "https://github.com/VincentQu888/Snowy",
   },
   {
     title: "CalenDR",
     description: "Founded full-stack medical app to schedule immmunization and cancer screening dates. Led entire SDLC and developed scheduling algorithms based on user-provided info.",
-    image: "/projects/placeholder-2.svg",
+    image: "/projects/calendr.png",
   },
 ];
 

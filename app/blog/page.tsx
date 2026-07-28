@@ -19,7 +19,7 @@ export default function BlogIndex() {
         ← home
       </Link>
 
-      <h1 className="mt-8 text-2xl font-medium tracking-tight">writing</h1>
+      <h1 className="mt-8 text-2xl font-medium tracking-tight">Writing.</h1>
 
       {posts.length === 0 ? (
         <p className="mt-8 text-muted">No posts yet.</p>
