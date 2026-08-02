@@ -88,6 +88,7 @@ type Project = {
   image?: string; // path under /public; optional when `youtube` is set
   href?: string; // optional link (repo, demo, writeup)
   youtube?: string; // YouTube URL — auto-uses its thumbnail and links to the video
+  instagram?: string; // Instagram reel/post URL — links to the reel; pair with `image` for the thumbnail (IG has no public thumbnail URL)
 };
 
 // Projects — add a screenshot to /public/projects and a short blurb.
@@ -123,7 +124,8 @@ const otherWork: Project[] = [
   {
     title: "High Stakes",
     description: "Wrote, filmed, directed and acted in small short film just for fun!",
-    image: "/projects/placeholder-2.svg",
+    image: "/projects/high-stakes.png",
+    instagram: "https://www.instagram.com/reel/Dbh2D-lhjY5/?igsh=cWRucmMzY3JxeWZ6",
   },
   {
     title: "Ephemeral",
@@ -230,12 +232,25 @@ function youTubeId(url: string): string | null {
   return m ? m[1] : null;
 }
 
+// Build a clean Instagram permalink from any share URL, dropping tracking
+// params like ?igsh=. Instagram exposes no predictable thumbnail URL (unlike
+// YouTube), so pair `instagram` with a local `image` for the card thumbnail.
+function instagramUrl(url: string): string | null {
+  const m = url.match(/instagram\.com\/(reels?|p|tv)\/([\w-]+)/);
+  if (!m) return null;
+  const kind = m[1] === "reels" ? "reel" : m[1];
+  return `https://www.instagram.com/${kind}/${m[2]}/`;
+}
+
 // A scrollable list of project cards so a long list stays compact.
 function ProjectList({ items }: { items: Project[] }) {
   return (
     <div className="scroll-thin max-h-[26rem] space-y-8 overflow-y-auto rounded-lg border border-edge p-4">
       {items.map((project) => {
         const videoId = project.youtube ? youTubeId(project.youtube) : null;
+        const reelUrl = project.instagram
+          ? instagramUrl(project.instagram)
+          : null;
         const image = videoId
           ? `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`
           : project.image;
@@ -243,7 +258,7 @@ function ProjectList({ items }: { items: Project[] }) {
           project.href ??
           (videoId
             ? `https://www.youtube.com/watch?v=${videoId}`
-            : project.youtube);
+            : reelUrl ?? project.youtube);
         // A URL without a scheme would be treated as a relative path (404).
         if (href && !/^(https?:|mailto:|\/)/.test(href)) {
           href = `https://${href}`;
