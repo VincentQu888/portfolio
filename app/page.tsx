@@ -160,7 +160,7 @@ const linkClass =
 
 function A({ href, children }: { href: string; children: ReactNode }) {
   // Internal routes (e.g. "/blog") use next/link; static files (e.g.
-  // "/resume.pdf") and external URLs use a plain anchor.
+  // "/file.svg") and external URLs use a plain anchor.
   const isRoute = href.startsWith("/") && !href.includes(".");
   if (isRoute) {
     return (
@@ -312,7 +312,6 @@ export default function Home() {
           <A href="https://ca.linkedin.com/in/vincentqu888">linkedin</A>
           <A href="https://x.com/icyfallblade">x</A>
           <A href="https://devpost.com/vincentqu888">devpost</A>
-          <A href="/resume.pdf">resume</A>
         </nav>
       </header>
 
@@ -416,10 +415,6 @@ export default function Home() {
             </li>
             <li>
               <A href="https://devpost.com/vincentqu888">Devpost</A>
-            </li>
-            <li>
-              {/* TODO: drop resume.pdf into /public, or point this at a hosted resume */}
-              <A href="/resume.pdf">Resume</A>
             </li>
             <li>
               <A href="mailto:vincent.qu@mail.utoronto.ca">Email</A>
