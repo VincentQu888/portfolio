@@ -125,6 +125,38 @@ body {
   border: 1px solid var(--edge);
 }
 
+/* Footnote references (superscript links) + the footnotes section */
+.prose sup a {
+  text-decoration: none;
+  font-weight: 500;
+  padding: 0 0.1em;
+}
+/* Offset in-page jumps so the target isn't flush with the viewport top */
+.prose sup a,
+.prose .footnotes li {
+  scroll-margin-top: 5rem;
+}
+.prose .footnotes {
+  margin-top: 2.5rem;
+  border-top: 1px solid var(--edge);
+  padding-top: 1rem;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+.prose .footnotes h2 {
+  margin-top: 0;
+  font-family: var(--font-mono), monospace;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--muted);
+}
+.prose .footnotes a[data-footnote-backref] {
+  text-decoration: none;
+  margin-left: 0.25rem;
+}
+
 /* Minimal scrollbar + soft fade at the top/bottom edges so cards don't
    get sliced by the container boundary. */
 .scroll-thin {

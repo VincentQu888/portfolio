@@ -2,7 +2,9 @@ import fs from "node:fs";
 import path from "node:path";
 import matter from "gray-matter";
 import { remark } from "remark";
-import html from "remark-html";
+import gfm from "remark-gfm";
+import remarkRehype from "remark-rehype";
+import rehypeStringify from "rehype-stringify";
 
 const BLOG_DIR = path.join(process.cwd(), "content", "blog");
 
@@ -46,7 +48,15 @@ export async function getPost(slug: string): Promise<Post | null> {
 
   const raw = fs.readFileSync(file, "utf8");
   const { data, content } = matter(raw);
-  const processed = await remark().use(html).process(content);
+  const processed = await remark()
+    .use(gfm) // tables, strikethrough, and [^n] footnotes
+    .use(remarkRehype, {
+      footnoteLabel: "Footnotes",
+      // Show the auto-generated "Footnotes" heading (defaults to sr-only).
+      footnoteLabelProperties: { className: [] },
+    })
+    .use(rehypeStringify)
+    .process(content);
 
   return {
     slug,
