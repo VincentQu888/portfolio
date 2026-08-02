@@ -12,22 +12,10 @@ function isRealPost(slug: string): boolean {
 }
 
 export async function GET(
-  req: Request,
+  _req: Request,
   { params }: { params: Promise<{ slug: string }> },
 ) {
   const { slug } = await params;
-  // Safe self-check: reports only WHETHER creds are visible, never the values.
-  if (new URL(req.url).searchParams.get("diag") === "1") {
-    return NextResponse.json({
-      upstash: Boolean(
-        process.env.UPSTASH_REDIS_REST_URL &&
-          process.env.UPSTASH_REDIS_REST_TOKEN,
-      ),
-      kv: Boolean(
-        process.env.KV_REST_API_URL && process.env.KV_REST_API_TOKEN,
-      ),
-    });
-  }
   if (!isRealPost(slug)) {
     return NextResponse.json({ error: "not found" }, { status: 404 });
   }
