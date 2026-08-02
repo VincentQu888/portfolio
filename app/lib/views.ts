@@ -1,18 +1,21 @@
 import { Redis } from "@upstash/redis";
 
-// Lazily create a Redis client only when the Upstash env vars are present.
+// Lazily create a Redis client only when the REST credentials are present.
 // This lets the site build and run normally (the counter just hides) before
-// the datastore is configured. Set these in Vercel / .env.local:
-//   UPSTASH_REDIS_REST_URL
-//   UPSTASH_REDIS_REST_TOKEN
+// the datastore is configured. Vercel's "Redis" / KV integration injects these
+// under different names depending on the provider, so we accept either pair:
+//   UPSTASH_REDIS_REST_URL / UPSTASH_REDIS_REST_TOKEN   (Upstash integration)
+//   KV_REST_API_URL        / KV_REST_API_TOKEN          (Vercel KV / Redis)
 let redis: Redis | null = null;
 let resolved = false;
 
 function getRedis(): Redis | null {
   if (resolved) return redis;
   resolved = true;
-  const url = process.env.UPSTASH_REDIS_REST_URL;
-  const token = process.env.UPSTASH_REDIS_REST_TOKEN;
+  const url =
+    process.env.UPSTASH_REDIS_REST_URL ?? process.env.KV_REST_API_URL;
+  const token =
+    process.env.UPSTASH_REDIS_REST_TOKEN ?? process.env.KV_REST_API_TOKEN;
   if (url && token) redis = new Redis({ url, token });
   return redis;
 }
