@@ -2,6 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { getAllPosts, getPost, formatDate } from "../../lib/posts";
+import ViewCounter from "./ViewCounter";
 
 export function generateStaticParams() {
   return getAllPosts().map((post) => ({ slug: post.slug }));
@@ -41,9 +42,10 @@ export default async function PostPage({
 
       <article className="mt-8">
         <header className="mb-8">
-          <time className="font-mono text-xs uppercase tracking-[0.2em] text-muted">
-            {formatDate(post.date)}
-          </time>
+          <div className="font-mono text-xs uppercase tracking-[0.2em] text-muted">
+            <time>{formatDate(post.date)}</time>
+            <ViewCounter slug={post.slug} />
+          </div>
           <h1 className="mt-2 text-2xl font-medium tracking-tight">
             {post.title}
           </h1>
