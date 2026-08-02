@@ -114,7 +114,7 @@ const projects: Project[] = [
   },
   {
     title: "CalenDR",
-    description: "Founded full-stack medical app to schedule immmunization and cancer screening dates. Led entire SDLC and developed scheduling algorithms based on user-provided info.",
+    description: "Founded full-stack medical app to schedule immunization and cancer screening dates. Led entire SDLC and developed scheduling algorithms based on user-provided info.",
     image: "/projects/calendr.png",
   },
 ];
