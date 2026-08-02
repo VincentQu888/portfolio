@@ -12,6 +12,7 @@ type YTPlayer = {
   mute: () => void;
   unMute: () => void;
   playVideo: () => void;
+  pauseVideo: () => void;
   setVolume: (v: number) => void;
   destroy: () => void;
 };
@@ -149,7 +150,7 @@ export default function BackgroundMusic() {
       p.playVideo();
       setMuted(false);
     } else {
-      p.mute();
+      p.pauseVideo();
       setMuted(true);
     }
   }
@@ -171,7 +172,7 @@ export default function BackgroundMusic() {
           <button
             type="button"
             onClick={toggle}
-            aria-label={muted ? "Play background music" : "Mute background music"}
+            aria-label={muted ? "Play background music" : "Pause background music"}
             aria-pressed={!muted}
             className="inline-flex items-center transition-colors hover:text-foreground focus:outline-none focus-visible:text-foreground"
           >
