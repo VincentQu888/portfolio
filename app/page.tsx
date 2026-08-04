@@ -122,12 +122,12 @@ const projects: Project[] = [
     title: "CalenDR",
     description: "Founded full-stack medical app to schedule immunization and cancer screening dates. Led entire SDLC and developed scheduling algorithms based on user-provided info.",
     image: "/projects/calendr.png",
-    href: "https://github.com/VincentQu888/gw-coding-judge",
   },
    {
     title: "GWJudge",
     description: "An online coding judge built to host problems and contests for the coding club at the Dr. G.W. Williams Secondary School. Inspired by https://dmoj.ca/. My first ever project!",
     image: "/projects/gwjudge.png",
+    href: "https://github.com/VincentQu888/gw-coding-judge",
   },
 ];
 
