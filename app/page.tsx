@@ -32,16 +32,6 @@ const proud: { text: string; year?: string; info?: string }[] = [
   { text: "1500 ELO on chess.com" },
 ];
 
-// Hobbies — supports [label](url) links. Edit freely.
-const hobbies: string[] = [
-  "Coding!",
-  "Poker",
-  "Badminton",
-  "Chess",
-  "Geometry Dash",
-  "Video Editing"
-];
-
 type Experience = {
   role: string; // supports [label](url) links
   date: string;
@@ -59,16 +49,6 @@ const experiences: Experience[] = [
     role: "Machine Learning Engineer, UTMIST",
     date: "2025/2026",
     description: "Engineering for UofT Machine Intelligence Student Team's FixMyElo, DFOD, and Agent Forge projects",
-  },
-  {
-    role: "Quantitative Developer, St. George Capital",
-    date: "2025/2026",
-    description: "Quantitative development and research, explored hierarchical clustering-based asset allocation.",
-  },
-  {
-    role: "Algorithms Developer, UTQC",
-    date: "2025",
-    description: "Encoding TSP graphs onto a bloch sphere for UofT's Quantum Computing Club.",
   },
 ];
 
@@ -352,21 +332,6 @@ export default function Home() {
 
         <Row label="other work">
           <ProjectList items={otherWork} />
-        </Row>
-
-        <Row label="hobbies">
-          <ul className="space-y-2">
-            {hobbies.map((h, i) => (
-              <li key={i} className="flex gap-3">
-                <span aria-hidden className="select-none text-muted">
-                  —
-                </span>
-                <span>
-                  <Rich>{h}</Rich>
-                </span>
-              </li>
-            ))}
-          </ul>
         </Row>
 
         <Row label="proud of!">
