@@ -24,17 +24,12 @@ const proud: { text: string; year?: string; info?: string }[] = [
     info: "[Old montage I made when I was 13](https://www.youtube.com/watch?v=L5clG2TMpI0&t=42s), probably the best demonstration of my old skill lol"
   },
   { text: "2nd degree black belt in Taekwondo" },
-  { text: "TH14 + champion league in Clash of Clans" },
   { text: "42s Tetris 40 line" },
   {
     text: "51 ZetaMac score",
     info: "Not great objectively, but I'm proud that I started with a score of 8 and got to 51 only a few weeks later.",
   },
   { text: "1500 ELO on chess.com" },
-  { 
-    text: "Co-founded NRGHacks",
-    info: "Founded a 100+ student [high school hackathon](https://vincentqu888.github.io/nrghacks2025/). Built the website, hosted 3 workshops, and I was the keynote speaker!"
-  },
 ];
 
 // Hobbies — supports [label](url) links. Edit freely.
