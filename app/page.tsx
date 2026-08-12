@@ -15,7 +15,7 @@ const proud: { text: string; year?: string; info?: string }[] = [
   },
   {
     text: "Top 6000 in Geometry Dash",
-    info: "[Completion video](https://www.youtube.com/watch?v=IC_2_WASt2A) for the hardest level I've beaten, ranking is by AREDL standards",
+    info: "[Completion video](https://www.youtube.com/watch?v=IC_2_WASt2A) for the hardest level I've beaten, ranking is by AREDL standards. I currently am playing [Slaughterhouse](https://www.youtube.com/watch?v=7W5bZJY2IPI) and I have it in 5 runs.",
   },
   { text: "Ascendant in Valorant" },
   { text: "Diamond in Overwatch" },
@@ -28,6 +28,10 @@ const proud: { text: string; year?: string; info?: string }[] = [
   {
     text: "51 ZetaMac score",
     info: "Not great objectively, but I'm proud that I started with a score of 8 and got to 51 only a few weeks later.",
+  },
+  {
+    text: "170 WPM",
+    info: "Monkeytype on 15s, 155 WPM 30s",
   },
   { text: "1500 ELO on chess.com" },
 ];
