@@ -30,8 +30,8 @@ const proud: { text: string; year?: string; info?: string }[] = [
     info: "Not great objectively, but I'm proud that I started with a score of 8 and got to 51 only a few weeks later.",
   },
   {
-    text: "170 WPM",
-    info: "Monkeytype on 15s, 155 WPM 30s",
+    text: "175 WPM",
+    info: "Monkeytype on 15s, 157 WPM 30s",
   },
   { text: "1500 ELO on chess.com" },
 ];
