@@ -15,6 +15,11 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Vincent Qu",
   description: "CS student & software engineer. Building on the web, learning ML.",
+  icons: {
+    icon: "/oswald-circle.png",
+    shortcut: "/oswald-circle.png",
+    apple: "/oswald-circle.png",
+  },
 };
 
 export default function RootLayout({
