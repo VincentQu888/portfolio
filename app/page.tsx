@@ -21,7 +21,7 @@ const proud: { text: string; year?: string; info?: string }[] = [
   { text: "Diamond in Overwatch" },
   { 
     text: "200 stars in bedwars",
-    info: "[Old montage I made when I was 13](https://www.youtube.com/watch?v=L5clG2TMpI0&t=42s), probably the best demonstration of my old skill lol"
+    info: "[Old montage I made when I was 13](https://www.youtube.com/watch?v=L5clG2TMpI0&t=42s), probably the best demonstration of my skill lol. Fun fact, I block trapped the #1 player Manhal_IQ_ in a [private scrimmage game (1:02)](https://www.youtube.com/watch?v=B_eAyZv2vb8&t=62s)."
   },
   { text: "42s Tetris 40 line" },
   {
@@ -304,7 +304,7 @@ export default function Home() {
       <div className="flex flex-col gap-9">
         <Row label="about">
           <p>
-            Prev. @ Shopify, 1st Year Computer Science @ University of Toronto, <A href="https://schulichleaders.com/scholars/vincent-qu/">Schulich Leader</A>.
+            Prev. @ Shopify, 2nd Year Computer Science @ University of Toronto, <A href="https://schulichleaders.com/scholars/vincent-qu/">Schulich Leader</A>.
           </p>
         </Row>
 
