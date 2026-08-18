@@ -15,7 +15,7 @@ const proud: { text: string; year?: string; info?: string }[] = [
   },
   {
     text: "Top 6000 in Geometry Dash",
-    info: "[Completion video](https://www.youtube.com/watch?v=IC_2_WASt2A) for the hardest level I've beaten, ranking is by AREDL standards. I currently am playing [Slaughterhouse](https://www.youtube.com/watch?v=7W5bZJY2IPI) and I have it in 5 runs.",
+    info: "[Completion video](https://www.youtube.com/watch?v=IC_2_WASt2A) for the hardest level I've beaten, ranking is by AREDL standards. I'm currently playing [Slaughterhouse](https://www.youtube.com/watch?v=7W5bZJY2IPI) and I have it in 5 runs.",
   },
   { text: "Ascendant in Valorant" },
   { text: "Diamond in Overwatch" },
@@ -23,7 +23,6 @@ const proud: { text: string; year?: string; info?: string }[] = [
     text: "200 stars in bedwars",
     info: "[Old montage I made when I was 13](https://www.youtube.com/watch?v=L5clG2TMpI0&t=42s), probably the best demonstration of my old skill lol"
   },
-  { text: "2nd degree black belt in Taekwondo" },
   { text: "42s Tetris 40 line" },
   {
     text: "51 ZetaMac score",
@@ -31,8 +30,9 @@ const proud: { text: string; year?: string; info?: string }[] = [
   },
   {
     text: "182 WPM",
-    info: "Monkeytype on 15s, 160 WPM 30s",
+    info: "Monkeytype on 15s, 166 WPM 30s",
   },
+  { text: "2nd degree black belt in Taekwondo" },
   { text: "1500 ELO on chess.com" },
 ];
 
@@ -50,9 +50,9 @@ const experiences: Experience[] = [
     description: "ML and ML infra for Messaging team, smart sending, impact projections, causal learning.",
   },
   {
-    role: "Machine Learning Engineer, UTMIST",
+    role: "Machine Learning Researcher, UTMIST",
     date: "2025/2026",
-    description: "Engineering for UofT Machine Intelligence Student Team's FixMyElo, DFOD, and Agent Forge projects",
+    description: "Engineering and research for UofT Machine Intelligence Student Team's FixMyElo, DFOD, and Agent Forge projects",
   },
 ];
 
@@ -304,7 +304,7 @@ export default function Home() {
       <div className="flex flex-col gap-9">
         <Row label="about">
           <p>
-            SWE @ Shopify, 1st Year Computer Science @ University of Toronto, <A href="https://schulichleaders.com/scholars/vincent-qu/">Schulich Leader Scholarship</A>.
+            Prev. @ Shopify, 1st Year Computer Science @ University of Toronto, <A href="https://schulichleaders.com/scholars/vincent-qu/">Schulich Leader</A>.
           </p>
         </Row>
 
