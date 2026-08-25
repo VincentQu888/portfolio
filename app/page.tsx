@@ -25,15 +25,10 @@ const proud: { text: string; year?: string; info?: string }[] = [
   },
   { text: "42s Tetris 40 line" },
   {
-    text: "51 ZetaMac score",
-    info: "Not great objectively, but I'm proud that I started with a score of 8 and got to 51 only a few weeks later.",
-  },
-  {
     text: "182 WPM",
     info: "Monkeytype on 15s, 166 WPM 30s",
   },
   { text: "2nd degree black belt in Taekwondo" },
-  { text: "1500 ELO on chess.com" },
 ];
 
 type Experience = {
