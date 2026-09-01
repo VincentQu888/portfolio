@@ -25,8 +25,8 @@ const proud: { text: string; year?: string; info?: string }[] = [
   },
   { text: "42s Tetris 40 line" },
   {
-    text: "182 WPM",
-    info: "Monkeytype on 15s, 166 WPM 30s",
+    text: "183 WPM",
+    info: "Monkeytype on 15s, 173 WPM 30s",
   },
   { text: "2nd degree black belt in Taekwondo" },
 ];
