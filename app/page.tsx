@@ -17,8 +17,8 @@ const proud: { text: string; year?: string; info?: string }[] = [
     text: "Top 6000 in Geometry Dash",
     info: "[Completion video](https://www.youtube.com/watch?v=IC_2_WASt2A) for the hardest level I've beaten, ranking is by AREDL standards. I'm currently playing [Slaughterhouse](https://www.youtube.com/watch?v=7W5bZJY2IPI) and I have it in 5 runs.",
   },
+  { text: "Grandmaster in Overwatch" },
   { text: "Ascendant in Valorant" },
-  { text: "Master in Overwatch" },
   { 
     text: "200 stars in bedwars",
     info: "[Old montage I made when I was 13](https://www.youtube.com/watch?v=L5clG2TMpI0&t=42s), probably the best demonstration of my skill lol. Fun fact, I block trapped the #1 player Manhal_IQ_ in a [private scrimmage game (1:02)](https://www.youtube.com/watch?v=B_eAyZv2vb8&t=62s)."
