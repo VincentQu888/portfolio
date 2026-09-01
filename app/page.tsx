@@ -42,7 +42,7 @@ const experiences: Experience[] = [
   {
     role: "Software Engineering Intern, Shopify",
     date: "2026",
-    description: "ML and ML infra for Messaging team, smart sending, impact projections, causal learning.",
+    description: "ML and ML infra for Messaging team on smart sending, impact projections, causal learning.",
   },
   {
     role: "Machine Learning Researcher, UTMIST",
