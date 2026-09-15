@@ -17,7 +17,10 @@ const proud: { text: string; year?: string; info?: string }[] = [
     text: "Top 6000 in Geometry Dash",
     info: "[Completion video](https://www.youtube.com/watch?v=IC_2_WASt2A) for the hardest level I've beaten, ranking is by AREDL standards. I'm currently playing [Slaughterhouse](https://www.youtube.com/watch?v=7W5bZJY2IPI) and I have it in 5 runs.",
   },
-  { text: "Grandmaster in Overwatch" },
+  { 
+    text: "Grandmaster in Overwatch",
+    info: "99th percentile, peak >4.2k SR. Lowkey this one is kinda larp cuz I was actually 1 game from GM rankup but it's ok."
+  },
   { text: "Ascendant in Valorant" },
   { 
     text: "200 stars in bedwars",
@@ -29,6 +32,10 @@ const proud: { text: string; year?: string; info?: string }[] = [
     info: "Monkeytype on 15s, 173 WPM 30s",
   },
   { text: "2nd degree black belt in Taekwondo" },
+  {
+    text: "IPA Team @ UofT",
+    info: "1 of 15 students selected for UofT's competitive poker (Intercollegiate Poker Association) tournament team",
+  },
 ];
 
 type Experience = {
@@ -42,86 +49,17 @@ const experiences: Experience[] = [
   {
     role: "Software Engineering Intern, Shopify",
     date: "2026",
-    description: "ML and ML infra for Messaging team on smart sending, impact projections, causal learning.",
+    description: "ML and ML infra for Messaging team on smart sending, impact projections, causal learning",
   },
   {
-    role: "Machine Learning Researcher, UTMIST",
+    role: "Machine Learning Engineer, UTMIST",
     date: "2025/2026",
     description: "Engineering and research for UofT Machine Intelligence Student Team's FixMyElo, DFOD, and Agent Forge projects",
   },
-];
-
-type Project = {
-  title: string;
-  description: string;
-  image?: string; // path under /public; optional when `youtube` is set
-  href?: string; // optional link (repo, demo, writeup)
-  youtube?: string; // YouTube URL — auto-uses its thumbnail and links to the video
-  instagram?: string; // Instagram reel/post URL — links to the reel; pair with `image` for the thumbnail (IG has no public thumbnail URL)
-};
-
-// Projects — add a screenshot to /public/projects and a short blurb.
-const projects: Project[] = [
   {
-    title: "FSDAD - Generalizing Deepfake Audio Detection",
-    description:
-      "First time trying research, wrote a solo paper on framing deepfake audio detection as a meta-learning problem to try few-shot generalization of a deepfake audio detector to new deepfake generators.",
-    image: "/projects/FSDAD.png",
-    href: "https://github.com/VincentQu888/generalizing-deepfake-audio-detection",
-  },
-  {
-    title: "FixMyElo",
-    description: "Architected a self-explaining RL-based chess agent by using attention-weighted board states, policy/value networks and MCTS + UCT move calculation with PyTorch, CUDA and python-chess",
-    image: "/projects/fixmyelo.png",
-    href: "https://github.com/UTMIST/fix-my-elo",
-  },
-  {
-    title: "Snowy",
-    description: "Built an encoder-only transformer from scratch + discord bot for 11th grade CS class. Determines if school board Instagram posts indicate snow days.",
-    image: "/projects/snowy.png",
-    href: "https://github.com/VincentQu888/Snowy",
-  },
-  {
-    title: "NRGHacks",
-    description: "Founded a 100+ student high school hackathon. Built the website, hosted 3 workshops, and I was the keynote speaker!",
-    image: "/projects/nrghacks.png",
-    href: "https://vincentqu888.github.io/nrghacks2025/",
-  },
-  {
-    title: "CalenDR",
-    description: "Founded full-stack medical app to schedule immunization and cancer screening dates. Led entire SDLC and developed scheduling algorithms based on user-provided info.",
-    image: "/projects/calendr.png",
-  },
-   {
-    title: "GWJudge",
-    description: "An online coding judge built to host problems and contests for the coding club at the Dr. G.W. Williams Secondary School. Inspired by https://dmoj.ca/. My first ever project!",
-    image: "/projects/gwjudge.png",
-    href: "https://github.com/VincentQu888/gw-coding-judge",
-  },
-];
-
-// Other work
-const otherWork: Project[] = [
-  {
-    title: "High Stakes",
-    description: "Wrote, filmed, directed and acted in small short film just for fun!",
-    image: "/projects/high-stakes.png",
-    instagram: "https://www.instagram.com/reel/Dbh2D-lhjY5/?igsh=cWRucmMzY3JxeWZ6",
-  },
-  {
-    title: "Ephemeral",
-    description: "Weird Geometry Dash memory layout idea.",
-    youtube: "https://www.youtube.com/watch?v=-horEvEZkBQ"
-  },
-  {
-    title: "Lepido",
-    description: "Probably the best layout I've ever created in Geometry Dash.",
-    youtube: "https://www.youtube.com/watch?v=A4xfC3NHu9Y"
-  },
-  {
-    title: "Reminiscence",
-    description: "Hackathon project that uses 3DGS to reconstruct VR environments from plain video. I think the demo video we filmed is the cooler part though.",
-    youtube: "youtube.com/watch?v=IPXhelhYv0w&source_ve_path=MjM4NTE&embeds_referring_euri=https%3A%2F%2Fdevpost.com%2F"
+    role: "[More experience](/experience)",
+    date: "",
+    description: "",
   },
 ];
 
@@ -205,79 +143,6 @@ function Info({ children }: { children: ReactNode }) {
   );
 }
 
-// Pull the 11-char video id out of common YouTube URL shapes.
-function youTubeId(url: string): string | null {
-  const m = url.match(
-    /(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/|shorts\/))([\w-]{11})/,
-  );
-  return m ? m[1] : null;
-}
-
-// Build a clean Instagram permalink from any share URL, dropping tracking
-// params like ?igsh=. Instagram exposes no predictable thumbnail URL (unlike
-// YouTube), so pair `instagram` with a local `image` for the card thumbnail.
-function instagramUrl(url: string): string | null {
-  const m = url.match(/instagram\.com\/(reels?|p|tv)\/([\w-]+)/);
-  if (!m) return null;
-  const kind = m[1] === "reels" ? "reel" : m[1];
-  return `https://www.instagram.com/${kind}/${m[2]}/`;
-}
-
-// A scrollable list of project cards so a long list stays compact.
-function ProjectList({ items }: { items: Project[] }) {
-  return (
-    <div className="scroll-thin max-h-[26rem] space-y-8 overflow-y-auto rounded-lg border border-edge p-4">
-      {items.map((project) => {
-        const videoId = project.youtube ? youTubeId(project.youtube) : null;
-        const reelUrl = project.instagram
-          ? instagramUrl(project.instagram)
-          : null;
-        const image = videoId
-          ? `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`
-          : project.image;
-        let href =
-          project.href ??
-          (videoId
-            ? `https://www.youtube.com/watch?v=${videoId}`
-            : reelUrl ?? project.youtube);
-        // A URL without a scheme would be treated as a relative path (404).
-        if (href && !/^(https?:|mailto:|\/)/.test(href)) {
-          href = `https://${href}`;
-        }
-        const thumb = image ? (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img
-            src={image}
-            alt={project.title}
-            className="aspect-video w-full rounded-md border border-edge object-cover"
-          />
-        ) : null;
-        return (
-          <article key={project.title} className="space-y-2.5">
-            {href && thumb ? (
-              <a
-                href={href}
-                {...(href.startsWith("http")
-                  ? { target: "_blank", rel: "noopener noreferrer" }
-                  : {})}
-                className="block"
-              >
-                {thumb}
-              </a>
-            ) : (
-              thumb
-            )}
-            <h3 className="font-medium">
-              {href ? <A href={href}>{project.title}</A> : project.title}
-            </h3>
-            <p className="text-sm text-muted">{project.description}</p>
-          </article>
-        );
-      })}
-    </div>
-  );
-}
-
 export default function Home() {
   return (
     <main className="mx-auto flex min-h-dvh w-full max-w-xl flex-col justify-center gap-12 px-6 py-20">
@@ -288,11 +153,12 @@ export default function Home() {
         </p>
         <nav className="mt-5 flex gap-5 font-mono text-xs uppercase tracking-[0.2em] text-muted">
           <A href="/blog">blog</A>
+          <A href="/work">work</A>
           <A href="https://github.com/VincentQu888">github</A>
-          <A href="https://dmoj.ca/user/vincentqu">dmoj</A>
           <A href="https://ca.linkedin.com/in/vincentqu888">linkedin</A>
           <A href="https://x.com/icyfallblade">x</A>
           <A href="https://devpost.com/vincentqu888">devpost</A>
+          <A href="mailto:vincent.qu@mail.utoronto.ca">email</A>
         </nav>
       </header>
 
@@ -308,7 +174,7 @@ export default function Home() {
             {experiences.map((exp, i) => (
               <div key={i}>
                 <div className="flex items-baseline justify-between gap-4">
-                  <h3 className="font-medium">
+                  <h3 className={exp.role.includes("/experience") ? undefined : "font-medium"}>
                     <Rich>{exp.role}</Rich>
                   </h3>
                   <span className="shrink-0 whitespace-nowrap font-mono text-xs text-muted">
@@ -325,21 +191,10 @@ export default function Home() {
           </div>
         </Row>
 
-        <Row label="projects">
-          <ProjectList items={projects} />
-        </Row>
-
-        <Row label="other work">
-          <ProjectList items={otherWork} />
-        </Row>
-
         <Row label="proud of!">
           <ul className="space-y-2">
             {proud.map((item, i) => (
-              <li key={i} className="flex gap-3">
-                <span aria-hidden className="select-none text-muted">
-                  —
-                </span>
+              <li key={i}>
                 <span>
                   <Rich>{item.text}</Rich>
                   {item.year && (
@@ -357,37 +212,6 @@ export default function Home() {
             ))}
           </ul>
         </Row>
-
-        <Row label="blog">
-          <p className="text-muted">
-            Thoughts on things I learn, stories, and anything else I feel like writing about! —{" "}
-            <A href="/blog">read the blog</A>.
-          </p>
-        </Row>
-
-        <Row label="links">
-          <ul className="space-y-1.5">
-            <li>
-              <A href="https://github.com/VincentQu888">GitHub</A>
-            </li>
-            <li>
-              <A href="https://dmoj.ca/user/vincentqu">DMOJ</A>
-            </li>
-            <li>
-              <A href="https://ca.linkedin.com/in/vincentqu888">LinkedIn</A>
-            </li>
-            <li>
-              <A href="https://x.com/icyfallblade">X</A>
-            </li>
-            <li>
-              <A href="https://devpost.com/vincentqu888">Devpost</A>
-            </li>
-            <li>
-              <A href="mailto:vincent.qu@mail.utoronto.ca">Email</A>
-            </li>
-          </ul>
-        </Row>
-
       </div>
 
       <footer className="flex items-center justify-between border-t border-edge pt-5 text-sm text-muted">

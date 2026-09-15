@@ -184,7 +184,7 @@ export default function BackgroundMusic() {
           href={SONG_URL}
           target="_blank"
           rel="noopener noreferrer"
-          className="max-w-[12rem] truncate transition-colors hover:text-foreground"
+          className="max-w-[12rem] truncate font-sans text-sm normal-case tracking-normal transition-colors hover:text-foreground"
         >
           {SONG_NAME}
         </a>
