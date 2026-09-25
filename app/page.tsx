@@ -32,6 +32,10 @@ const proud: { text: string; year?: string; info?: string }[] = [
     info: "Monkeytype on 15s, 173 WPM 30s",
   },
   { text: "2nd degree black belt in Taekwondo" },
+  {
+    text: "IPA Team @ UofT",
+    info: "1 of 15 students selected for UofT's competitive poker (Intercollegiate Poker Association) tournament team",
+  },
 ];
 
 type Experience = {
