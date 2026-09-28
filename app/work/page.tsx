@@ -63,7 +63,7 @@ const projects: Project[] = [
 const otherWork: Project[] = [
   {
     title: "High Stakes",
-    description: "Wrote, filmed, directed and acted in small short film just for fun!",
+    description: "Wrote, filmed, directed and acted in a short film just for fun!",
     image: "/projects/high-stakes.png",
     instagram: "https://www.instagram.com/reel/Dbh2D-lhjY5/?igsh=cWRucmMzY3JxeWZ6",
   },
