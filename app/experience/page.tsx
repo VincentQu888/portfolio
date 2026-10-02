@@ -15,7 +15,7 @@ type Experience = {
 
 const experiences: Experience[] = [
   {
-    role: "ML Quantitative Research Assistant, Harvard University",
+    role: "Quantitative ML Research Assistant, Harvard University",
     date: "2026",
     description:
       "Sentiment analysis research on conference calls with FinBERT, LDA, fog, Naive-Bayes, for Prof. Hashim Zaman",
