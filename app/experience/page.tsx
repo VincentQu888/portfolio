@@ -18,7 +18,7 @@ const experiences: Experience[] = [
     role: "Undergraduate Researcher, University of Toronto",
     date: "2026",
     description:
-      "Research on cooperative strategies emerging from MARL on games.",
+      "Research on cooperative strategies emerging from MARL on team-based strategy games.",
   },
   {
     role: "Research Assistant, Harvard University",
